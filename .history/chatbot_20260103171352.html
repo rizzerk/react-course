@@ -19,11 +19,7 @@
       function ChatInput(){
         return(
           <>
-            <input 
-              placeholder="Send a message to Chatbot" 
-              size="30" 
-
-            />
+            <input placeholder="Send a message to Chatbot" size="30" />
             <button>Send</button>
           </>
         );
@@ -46,48 +42,27 @@
         // }
 
         return (
-          // Guard operator: var == var1 && var 2 (if var is equal to var1 then do var2) 
         <div>
-          {sender === 'robot' && (
-            <img src="robot.png" width ="50" />
-          )}
+          {sender === 'robot' && <img src="robot.png" width ="50" />}
           {message}
-          {sender === 'user' && (
-            <img src="user.png" width ="50" />
-          )}
+          {sender === 'user' && <img src="user.png" width ="50" />}
         </div>
 
         )
       }
 
-      function App(){
-        
-        return(
-          <>
-            <ChatInput />
-            <ChatMessage 
-              message="hello Chatbot" 
-              sender="user"
-            />
-            <ChatMessage 
-              message="Hello! How can I help you" 
-              sender="robot"
-            />
-            <ChatMessage 
-              message="Can you get me todays date?" 
-              sender="user"
-            />
-            <ChatMessage 
-              message="Today is blah blah" 
-              sender="robot"
-            />
-          </>
-        );
-
-      }
+      const app = (
+        <>
+          <ChatInput />
+          <ChatMessage message="hello Chatbot" sender="user"/>
+          <ChatMessage message="Hello! How can I help you" sender="robot"/>
+          <ChatMessage message="Can you get me todays date?" sender="user"/>
+          <ChatMessage message="Today is blah blah" sender="robot"/>
+        </>
+      )
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(<App />);
+      ReactDOM.createRoot(container).render(app);
     </script>
   </body>
 </html>
