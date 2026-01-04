@@ -9,8 +9,6 @@
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
-    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
-
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
 
@@ -26,27 +24,14 @@
         }
 
         function sendMessage(){
-          const newChatMessages = [
+          setChatMessages([
             ...chatMessages,
             {
-              message: inputText,
+              message: 'test',
               sender: 'user',
-              id: crypto.randomUUID()
-            }];
-          
-          setChatMessages(newChatMessages);
-
-          const response = Chatbot.getResponse(inputText);
-          setChatMessages([
-            ...newChatMessages,
-            {
-              message: response,
-              sender: 'robot',
               id: crypto.randomUUID()
             }
           ]);
-
-          setInputText('');
         }
 
         return(
@@ -55,7 +40,6 @@
               placeholder="Send a message to Chatbot" 
               size="30" 
               onChange={saveInputText}
-              value={inputText}
             />
             <button onClick={sendMessage} >Send</button>
           </>
@@ -93,7 +77,41 @@
         )
       }
 
-      function ChatMessages({ chatMessages }){
+      function ChatMessages(){
+        //array destructuring
+        const [chatMessages, setChatMessages] = React.useState(
+        [{
+          message: 'hello Chatbot',
+          sender: 'user',
+          id: 'id1'
+        },{
+          message: 'Hello! How can I help you',
+          sender: 'robot',
+          id: 'id2'
+        },{
+          message: 'Can you get me todays date?',
+          sender: 'user',
+          id: 'id3'
+        },{
+          message: 'Today is blah blah',
+          sender: 'robot',
+          id: 'id4'
+        }]
+        );
+
+        //const [chatMessage, setChatMessages] = array;
+        //shortcut of:
+        // const chatMessages = array[0];
+        // const setChatMessages = array[1];
+
+        // const chatMessageCompnents = chatMessages.map((chatMessage) => { 
+        //   return(
+        //     <ChatMessage 
+        //       message={chatMessage.message}
+        //       sender={chatMessage.sender}
+        //     />
+        //   );
+        // });
         
         return(
           <>
@@ -108,7 +126,6 @@
             })}
           </>
         );
-
       }
 
       function App(){
@@ -145,7 +162,7 @@
               setChatMessages={setChatMessages}
             />
             <ChatMessages 
-              chatMessages={chatMessages}
+
             />
 
           </>
