@@ -20,18 +20,13 @@
       //component name must start in capital letter
       function ChatInput({chatMessages, setChatMessages}){
         const [inputText, setInputText] = React.useState('');
-        const [isLoading, setIsLoading] = React.useState(false);
 
         function saveInputText(event){
           setInputText(event.target.value);
         }
 
         async function sendMessage(){
-          if(isLoading || inputText.trim() === ''){
-            return;
-          }
           setInputText('');
-          setIsLoading(true);
 
           const newChatMessages = [
             ...chatMessages,
@@ -59,7 +54,6 @@
             }
           ]);
           
-          setIsLoading(false);
         }
 
         function handelKeyDown(event){

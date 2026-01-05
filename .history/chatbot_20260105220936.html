@@ -20,19 +20,12 @@
       //component name must start in capital letter
       function ChatInput({chatMessages, setChatMessages}){
         const [inputText, setInputText] = React.useState('');
-        const [isLoading, setIsLoading] = React.useState(false);
 
         function saveInputText(event){
           setInputText(event.target.value);
         }
 
         async function sendMessage(){
-          if(isLoading || inputText.trim() === ''){
-            return;
-          }
-          setInputText('');
-          setIsLoading(true);
-
           const newChatMessages = [
             ...chatMessages,
             {
@@ -41,13 +34,7 @@
               id: crypto.randomUUID()
             }];
           
-          setChatMessages([
-            ...newChatMessages,
-            {
-              message: 'Loading...',
-              sender: 'robot',
-              id: crypto.randomUUID()
-            }]);
+          setChatMessages(newChatMessages);
 
           const response = await Chatbot.getResponseAsync(inputText);
           setChatMessages([
@@ -58,8 +45,8 @@
               id: crypto.randomUUID()
             }
           ]);
-          
-          setIsLoading(false);
+
+          setInputText('');
         }
 
         function handelKeyDown(event){
@@ -79,7 +66,7 @@
               onKeyDown={handelKeyDown}
               value={inputText}
             />
-            <button onClick={sendMessage}>Send</button>
+            <button onClick={sendMessage} >Send</button>
           </>
         );
       }
