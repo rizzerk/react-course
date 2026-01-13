@@ -75,16 +75,6 @@
         scrollbar-width: none;
       }
 
-      .welcome-message {
-        color: rgb(120, 120, 120);
-        text-align: center;
-      }
-
-      .loading-image{
-        height: 40px;
-        margin: -15px;
-      }
-
     </style>
   </head>
   <body>
@@ -134,7 +124,7 @@
           setChatMessages([
             ...newChatMessages,
             {
-              message: <img className='loading-image' src='loading-spinner.gif'/>,
+              message: 'Loading...',
               sender: 'robot',
               id: crypto.randomUUID()
             }]);
@@ -222,26 +212,19 @@
         )
       }
 
-      function useAutoScroll( dependencies ){
-       const containerRef = React.useRef(null);
+      function ChatMessages({ chatMessages }){
+       const chatMesssagesRef = React.useRef(null);
 
         //runs the code after the component is created or updated
         React.useEffect(() =>{
           
-         const containerElem = containerRef.current;
+         const containerElem = chatMesssagesRef.current;
          if(containerElem){
           containerElem.scrollTop = containerElem.scrollHeight;
          }   
 
         //now runs every time chatMessages changes. [] controls when useEffect runs
-        }, dependencies);
-
-        return containerRef;
-      
-      }
-      
-    function ChatMessages({ chatMessages }){
-          const chatMesssagesRef = useAutoScroll([chatMessages]);
+        }, [chatMessages]);
 
         return(
           <div className="chat-messages-container"
@@ -262,7 +245,13 @@
 
       function App(){
 
-        const [chatMessages, setChatMessages] = React.useState([]);
+        const [chatMessages, setChatMessages] = React.useState(
+        [{
+          message: '',
+          sender: '',
+          id: ''
+        }]
+        );
 
         //const [chatMessage, setChatMessages] = array;
         //shortcut of:
@@ -271,15 +260,13 @@
 
         return(
           <div className="app-container">
-            {chatMessages.length === 0 && (
-              <p className="welcome-message"> Welcome to the chatbot project! Send a message using the textbox below</p>
-            )
-
-            }
-
-            <ChatMessages 
-            chatMessages={chatMessages}
+            (if (chatMessages.length === 0){
+              <p>Welcome to the chatbot project! Send a message using the textbox below.</p>
+            } else{
+              <ChatMessages 
+              chatMessages={chatMessages}
             />
+            })
 
             <ChatInput 
               chatMessages={chatMessages}
