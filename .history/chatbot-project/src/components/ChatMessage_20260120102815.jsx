@@ -1,5 +1,6 @@
 import RobotProfileImage from '../assets/robot.png';
 import UserProfileImage from '../assets/user.png';
+import LoadingSpinnerGIF from '../assets/loading-spinner.gif';
 import './ChatMessage.css'
 import dayjs from 'dayjs';
 
@@ -17,7 +18,10 @@ export function ChatMessage({ message, sender, time }){
     )}
     <div 
       className="chat-message-text">
-      {message}
+      {message === 'Loading' ? 
+      <img className='loading-image' src={LoadingSpinnerGIF}/> :
+      message  
+    }
       {time && (
         <div className='chat-message-time'>
           {dayjs(time).format('h:mma')}

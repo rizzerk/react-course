@@ -20,7 +20,7 @@ export function ChatMessage({ message, sender, time }){
       {message}
       {time && (
         <div className='chat-message-time'>
-          {dayjs(time).format('h:mma')}
+          {dayjs(time).fomat('h:mma')}
         </div>
       )}
     </div>

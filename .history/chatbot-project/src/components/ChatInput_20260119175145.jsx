@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 
 export function ChatInput({ chatMessages, setChatMessages }){
   const [inputText, setInputText] = useState('');
+  const [time, setTime] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   function saveInputText(event){
@@ -19,8 +20,12 @@ export function ChatInput({ chatMessages, setChatMessages }){
       return;
     }
 
+    const time = dayjs().valueOf();
+    const timestring = dayjs(time).format('h:mma');
+
     //set textInput as empty and isLoading as true after sending the message
     setInputText('');
+    setTime('');
     setIsLoading(true);
 
     
@@ -29,8 +34,7 @@ export function ChatInput({ chatMessages, setChatMessages }){
       {
         message: inputText,
         sender: 'user',
-        id: crypto.randomUUID(),
-        time: dayjs().valueOf()
+        id: crypto.randomUUID()
       }];
     
     //chatbot temporarily says "Loading..." 
@@ -50,8 +54,7 @@ export function ChatInput({ chatMessages, setChatMessages }){
       {
         message: response,
         sender: 'robot',
-        id: crypto.randomUUID(),
-        time: dayjs().valueOf()
+        id: crypto.randomUUID()
       }
     ]);
     
@@ -67,10 +70,6 @@ export function ChatInput({ chatMessages, setChatMessages }){
     }
   }
 
-  function clearInput(){
-    setChatMessages([]);
-  }
-
   return(
     <div className="chat-input-container">
       <input 
@@ -84,11 +83,7 @@ export function ChatInput({ chatMessages, setChatMessages }){
       <button 
         onClick={sendMessage}
         className="send-button"
-      >Send</button>
-      <button
-        onClick={clearInput}
-        className="clear-button"
-      >Clear</button>
+      > Send</button>
     </div>
   );
 }

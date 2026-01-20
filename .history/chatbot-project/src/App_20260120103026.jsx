@@ -6,7 +6,7 @@ import './App.css'
 
 
 function App() {
-   const [chatMessages, setChatMessages] = useState( JSON.parse(localStorage.getItem('messages'), []));
+  const [chatMessages, setChatMessages] = useState( JSON.parse(localStorage.getItem('messages')) || []);
 
   useEffect(() => {
     Chatbot.addResponses(

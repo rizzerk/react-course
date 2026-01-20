@@ -21,7 +21,7 @@ function useAutoScroll( dependencies ){
  }
 
 function ChatMessages({ chatMessages }){
-const chatMesssagesRef = useAutoScroll([chatMessages]);
+  const chatMesssagesRef = useAutoScroll([chatMessages]);
 
 return(
   <div className="chat-messages-container"

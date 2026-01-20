@@ -68,7 +68,7 @@ export function ChatInput({ chatMessages, setChatMessages }){
   }
 
   function clearInput(){
-    setChatMessages([]);
+    setInputText('');
   }
 
   return(

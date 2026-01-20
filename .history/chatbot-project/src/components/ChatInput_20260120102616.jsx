@@ -37,7 +37,7 @@ export function ChatInput({ chatMessages, setChatMessages }){
     setChatMessages([
       ...newChatMessages,
       {
-        message: <img className='loading-image' src={LoadingSpinnerGIF}/>,
+        message: 'Loading',
         sender: 'robot',
         id: crypto.randomUUID()
       }]);

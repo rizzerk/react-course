@@ -67,10 +67,6 @@ export function ChatInput({ chatMessages, setChatMessages }){
     }
   }
 
-  function clearInput(){
-    setChatMessages([]);
-  }
-
   return(
     <div className="chat-input-container">
       <input 

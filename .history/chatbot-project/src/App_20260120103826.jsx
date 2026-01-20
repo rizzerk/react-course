@@ -6,8 +6,11 @@ import './App.css'
 
 
 function App() {
-   const [chatMessages, setChatMessages] = useState( JSON.parse(localStorage.getItem('messages'), []));
-
+  // const [chatMessages, setChatMessages] = useState( JSON.parse(localStorage.getItem('messages')), []);
+  const [chatMessages, setChatMessages] = useState(() => {
+    const saved = localStorage.getItem('messages');
+    return saved ? JSON.parse(saved) : [];
+  });
   useEffect(() => {
     Chatbot.addResponses(
       {
