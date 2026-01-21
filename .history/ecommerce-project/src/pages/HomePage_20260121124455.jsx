@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
+function HomePage() {
 
-
-    <!-- Here are the CSS files for this page. -->
-    <link rel="stylesheet" href="styles/shared/general.css">
-    <link rel="stylesheet" href="styles/shared/header.css">
-    <link rel="stylesheet" href="styles/pages/index.css">
-  </head>
-  <body>
-    <div class="header">
+  return(
+    <>
+      <div class="header">
       <div class="left-section">
         <a href="index.html" class="header-link">
           <img class="logo"
@@ -39,9 +32,9 @@
           <div class="cart-text">Cart</div>
         </a>
       </div>
-    </div>
+      </div>
 
-    <div class="home-page">
+      <div class="home-page">
       <div class="products-grid">
         <div class="product-container">
           <div class="product-image-container">
@@ -190,6 +183,7 @@
           </button>
         </div>
       </div>
-    </div>
-  </body>
-</html>
+      </div>
+    </>
+  );
+}

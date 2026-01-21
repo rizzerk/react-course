@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
+function HomePage() {
 
-
-    <!-- Here are the CSS files for this page. -->
-    <link rel="stylesheet" href="styles/shared/general.css">
-    <link rel="stylesheet" href="styles/shared/header.css">
-    <link rel="stylesheet" href="styles/pages/index.css">
-  </head>
-  <body>
+  return(
+    <>
     <div class="header">
       <div class="left-section">
         <a href="index.html" class="header-link">
@@ -191,5 +184,6 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+    </>
+  );
+}
