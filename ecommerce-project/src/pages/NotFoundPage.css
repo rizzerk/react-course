@@ -1,0 +1,19 @@
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+
+.big{
+ font-size: 150px;
+ color: rgb(25,135,84);
+}
+
+.text{
+  font-size: 20px;
+  text-align: center;
+}
