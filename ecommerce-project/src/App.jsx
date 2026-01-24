@@ -15,7 +15,7 @@ function App() {
       .then((response)=>{
         setCart(response.data)
       });
-  })
+  }, [])
 
   return (
     <Routes>
