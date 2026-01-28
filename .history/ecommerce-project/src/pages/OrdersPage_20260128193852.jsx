@@ -63,7 +63,7 @@ export function OrdersPage({ cart }) {
 
                         <div className="product-details">
                           <div className="product-name">
-                            {orderProduct.product.name}
+                            {orderProduct.order.name}
                           </div>
                           <div className="product-delivery-date">
                             Arriving on: {dayjs(orderProduct.estimatedDeliveryTimeMS).format('MMMM D')}
